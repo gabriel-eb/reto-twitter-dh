@@ -1,7 +1,7 @@
 # Reto Twitter
 
 ## Tarea
-Crear un clon de twitter con función básica de registro, inicio de sesión y tweets (solo texto).
+Crear un clon de twitter con función básica de registro, inicio de sesión y tweets (solo texto). Haz fork de este repo para que podamos ver tu código terminado.
 
 ## Modelo 
 ### Usuario
