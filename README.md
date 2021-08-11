@@ -12,7 +12,7 @@ Crear un clon de twitter con función básica de registro, inicio de sesión y t
 
 ### Tweet
 1. id
-2. username
+2. user
 3. contenido
 4. timestamp
 
