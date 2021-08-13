@@ -6,7 +6,7 @@ const methodOverride = require('method-override');
 const morgan = require("morgan");
 const session = require("express-session");
 
-const rutaMain = require("./routes/mainRoute");
+const rutaMain = require("./routes/main");
 const recordarSession = require('./middlewares/recordarSession');
 
 app.set("view engine", "ejs");
