@@ -4,15 +4,15 @@ const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 
 function index(req, res) {
-    res.render("index", {tweet:[]})
+    res.render("index", {tweets:[]})
 }
 
 function index2(req, res) {
-    res.render("index2", { tweet: [] })
+    res.render("index2", { tweets: [] })
 }
 
 function sendTweet(req, res) {
-    res.render("index2", { tweet: [] })
+    res.render("index2", { tweets: [] })
 }
 
 function login(req, res) {
@@ -22,17 +22,16 @@ function login(req, res) {
 function signup(req,res){
     res.render('signup');
 }
-
-function registrar(req, res){
+async function registrar(req, res){
     // if (resultValidation.errors.length > 0) {
     //     return res.render('signup', {
     //         errors: resultValidation.mapped(),
     //         oldData: req.body,
     //     });
     // }
-    let userInDB = db.User.findAll({
+    let userInDB = await db.User.findAll({
         where: { email: {[Op.like]: req.body.email} }
-    })
+    });
     if (userInDB) {
         return res.render('signup'
         // , {
@@ -48,8 +47,7 @@ function registrar(req, res){
 
     let userToCreate = {
         ...req.body,
-        password: bcryptjs.hashSync(req.body.password, 10),
-        avatar: req.file.filename || "default.jpg",
+        password: bcryptjs.hashSync(req.body.pass, 10),
     }
 
     db.User.create(userToCreate).then(userCreated => {
@@ -61,8 +59,19 @@ function registrar(req, res){
 function edit(req,res){
     res.render('/index2');
 }
-function loggear(req, res) {
-    res.render('/index2');
+
+async function loggear(req, res) {
+    let userToLogin = await db.User.findAll({
+        where: { email: { [Op.like]: req.body.email } }
+    });
+    if (userToLogin) {
+        if (bcryptjs.compareSync(req.body.password, userToLogin.password)) {
+            req.session.userId = userToLogin.id;
+            return res.redirect("/");
+        }
+        return res.render("login");
+    }
+    return res.render("login");
 }
 
 module.exports = { index, index2, sendTweet, login, signup, registrar, edit, loggear}
