@@ -16,19 +16,8 @@ const tweetController = {
             }]
         })
             .then(tweets => {
-                res.render('tweetsList.ejs', {tweets})
+                res.render('index.ejs', {tweets})
             })
-    },
-    add: function (req, res, next) {
-        db.User.findAll()
-        .then(genres => {
-            res.render('tweetsAdd', { allUsers: genres });
-        })
-        .catch(err => {
-            console.error(err)
-            next(err)
-        }) 
-        
     },
     create: function (req,res) {
         const tweetInfo = req.body
@@ -36,7 +25,7 @@ const tweetController = {
         db.Tweet.create(tweetInfo)
             .then(tweetCreated => {
                 console.log(tweetCreated);
-                res.redirect('/tweets')
+                res.redirect('/index')
             })
     },
     edit: async function(req,res) {
@@ -47,7 +36,7 @@ const tweetController = {
             }]
         })
         const allUsers = await db.User.findAll()
-        res.render('tweetsEdit', { Tweet: tweet, allUsers })
+        res.render('index', { Tweet: tweet, allUsers })
         
     },
     update: async function (req,res) {
@@ -60,7 +49,7 @@ const tweetController = {
             }
         })
         
-        res.redirect('/tweets')
+        res.redirect('/index')
     }
 }
 
