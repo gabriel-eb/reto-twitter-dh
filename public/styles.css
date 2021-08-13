@@ -9,6 +9,8 @@ body {
   --twitter-background: #e6ecf0;
 }
 
+
+
 .sidebarOption {
   display: flex;
   align-items: center;
@@ -55,9 +57,14 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding: 0 10px;
+  background-color: black;
 }
 
 .sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  cursor: pointer;
   border-right: 1px solid var(--twitter-background);
   flex: 0.2;
 
