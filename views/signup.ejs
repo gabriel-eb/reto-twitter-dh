@@ -7,10 +7,18 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Bienvenido a Tweeter</h1>
+    <h2>Crea una cuenta</h2>
     <form action="/login" method="post">
+        <label for="username">Nombre de usuario</label>
         <input type="text" name="username" id="username" required>
+        <br>
+        <label for="email">Correo electrónico</label>
         <input type="email" name="email" id="email" required>
+        <br>
+        <label for="pass">Contraseña</label>
         <input type="password" name="pass" id="pass" required>
+        <br>
         <button type="submit">Unirse</button>
     </form>
 </body>
