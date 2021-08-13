@@ -7,7 +7,6 @@ const morgan = require("morgan");
 const session = require("express-session");
 
 const rutaMain = require("./routes/main");
-const recordarSession = require('./middlewares/recordarSession');
 
 app.set("view engine", "ejs");
 
@@ -21,7 +20,6 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-app.use(recordarSession);
 app.use((req, res, next) => {
     res.locals.sessionId = req.session.userId;
     next();
