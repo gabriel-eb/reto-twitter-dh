@@ -11,6 +11,10 @@ function index2(req, res) {
     res.render("index2", { tweet: [] })
 }
 
+function sendTweet(req, res) {
+    res.render("index2", { tweet: [] })
+}
+
 function login(req, res) {
     res.render('login');
 }
@@ -61,4 +65,4 @@ function loggear(req, res) {
     res.render('/index2');
 }
 
-module.exports = { index, index2, login, signup, registrar, edit, loggear}
+module.exports = { index, index2, sendTweet, login, signup, registrar, edit, loggear}

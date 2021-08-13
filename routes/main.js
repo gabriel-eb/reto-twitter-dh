@@ -10,6 +10,7 @@ const controller = require("../controllers/mainController");
 
 router.get("/", controller.index);
 router.get("/index2", controller.index2);
+router.post("/index2",controller.sendTweet);
 router.get("/edit", controller.edit);
 router.route("/login").get(controller.login).post(controller.loggear);
 router.route("/signup").get(controller.signup).post(controller.registrar);
