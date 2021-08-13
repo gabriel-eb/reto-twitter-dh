@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const session = require("express-session");
 
 const rutaMain = require("./routes/mainRoute");
+const recordarSession = require('./middlewares/recordarSession');
 
 app.set("view engine", "ejs");
 
