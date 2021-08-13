@@ -64,6 +64,8 @@ async function loggear(req, res) {
     let userToLogin = await db.User.findAll({
         where: { email: { [Op.like]: req.body.email } }
     });
+    userToLogin = userToLogin[0].dataValues;
+    console.log(userToLogin);
     if (userToLogin) {
         if (bcryptjs.compareSync(req.body.password, userToLogin.password)) {
             req.session.userId = userToLogin.id;
