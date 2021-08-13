@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <img src="" alt="">
+        <div>
+            <ul>
+                <li><a href="/user/edit">Editar información</a></li>
+                <li><a href="/logout">Cerrar sesión</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+    <form action="/tweet" method="post">
+        <textarea name="contenido" id="contenido" cols="50" rows="5" placeholder="¿Qué estás pensando?">
+        </textarea>
+        <button type="submit">Tweet</button>
+    </form>
+    <section>
+    <%for(let tweet of tweets)%>
+        <article>
+            <h3><%= tweet.user %></h3>
+            <p><%= tweet.contenido %></p>
+            <div class="opciones">
+                <ul>
+                    <li><button onclick="window.location.href='/tweet/edit/<%=tweet.id%>'">Editar</button></li>
+                    <li><button onclick="window.location.href='/tweet/delete/<%=tweet.id%>?_method=DELETE'">Borrar</button></li>
+                    <li><%= tweet.timestamp %></li>
+                </ul>
+            </div>
+        </article>
+    <%}%>
+    </section>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
